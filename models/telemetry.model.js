@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Device Schema
+ * Telemetry Schema
  */
 var TelemetrySchema = new Schema({
     created: {
@@ -64,7 +64,7 @@ var TelemetrySchema = new Schema({
     }
 });
 
-DeviceSchema.pre('save', function(next) {
+TelemetrySchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
 
