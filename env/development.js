@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/terepac-one-dev',
+    db: 'mongodb://localhost/one-platform-dev',
     app: {
-        title: 'terepac-api - Development Environment'
+        title: 'terepac-models - Development Environment'
     }
 };
