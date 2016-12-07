@@ -11,7 +11,9 @@ var mongoose = require('mongoose'),
 mongoose.Promise = global.Promise;
 
 exports.populate = function() {
+    console.log('Starting pre-pop...');
     populate();
+    console.log('Data pre-populated.');
 };
 
 function populate() {
@@ -19,6 +21,8 @@ function populate() {
 }
 
 function createClient() {
+    console.log('Creating client...');
+
     var client = new Client({
         tagCode: 'TERE',
         companyName: 'Terepac Corporation',
@@ -52,12 +56,15 @@ function createClient() {
         if (err) {
             console.log('Error');
         } else {
+            console.log('Client created: ' + client._id);
             createUser(client._id);
         }
     });
 }
 
 function createUser(clientId) {
+    console.log('Creating user...');
+
     var user = new User({
         firstName: 'Darryl',
         lastName: 'Patterson',
@@ -77,6 +84,7 @@ function createUser(clientId) {
                 {$push: {'users': mongoose.Types.ObjectId(user._id)}},
                 {safe: true, upsert: true, new : true},
                 function(err, client) {
+                    console.log('User created:' + user._id);
                     createSensors(clientId);
                 }
             );
@@ -85,6 +93,8 @@ function createUser(clientId) {
 }
 
 function createSensors(clientId) {
+    console.log('Creating sensors...');
+
     var currentDate = new Date();
 
     var sensors = [
@@ -136,12 +146,15 @@ function createSensors(clientId) {
         if (err) {
             console.log('Error');
         } else {
+            console.log('Sensors created.');
             createDevice(docs, clientId);
         }
     });
 }
 
 function createDevice(sensors, clientId) {
+    console.log('Creating device...');
+
     var sensorIds = sensors.map(function(sensor) {
         return sensor._id;
     });
@@ -160,7 +173,7 @@ function createDevice(sensors, clientId) {
         if (err) {
             console.log('Error');
         } else {
-            console.log('Data pre-populated.');
+            console.log('Device created: ' + device._id);
         }
     });
 }
