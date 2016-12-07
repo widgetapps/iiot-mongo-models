@@ -31,11 +31,14 @@ var DeviceSchema = new Schema({
     sensors: [{
         sensor: {
             type: Schema.ObjectId,
-            ref: 'Client',
+            ref: 'Sensor',
             index: true
         }
     }],
     tagCode: {
+        type: String
+    },
+    tagLocation: {
         type: String
     },
     descriptor: {
