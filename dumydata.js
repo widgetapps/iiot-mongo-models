@@ -8,6 +8,8 @@ var mongoose = require('mongoose'),
     Client    = require('./models/client.model'),
     User      = require('./models/user.model');
 
+mongoose.Promise = global.Promise;
+
 exports.populate = function() {
     populate();
 };
