@@ -1,6 +1,6 @@
 {
   "name": "@terepac/terepac-models",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
   "description": "Private Module for Terepac Models",
   "main": "index.js",
@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "crypto": "0.0.3",
-    "mongoose": "^4.7.0"
+    "mongoose": "^4.7.0",
+    "randomstring": "^1.1.5"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",

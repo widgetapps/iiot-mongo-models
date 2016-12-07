@@ -17,7 +17,13 @@ var SensorSchema = new Schema({
     updated: {
         type: Date
     },
+    tagCode: {
+        type: String
+    },
     type: {
+        type: String
+    },
+    description: {
         type: String
     },
     unit: {
