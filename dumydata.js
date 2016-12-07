@@ -2,13 +2,14 @@
 
 var mongoose = require('mongoose'),
     randomstring = require('randomstring'),
-    Telemetry = require('./models/telemetry.model'),
     Sensor    = require('./models/sensor.model'),
     Device    = require('./models/device.model'),
     Client    = require('./models/client.model'),
     User      = require('./models/user.model');
 
 mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/terepac-one-dev');
 
 exports.populate = function() {
     console.log('Starting pre-pop...');
@@ -155,11 +156,22 @@ function createSensors(clientId) {
 function createDevice(sensors, clientId) {
     console.log('Creating device...');
 
+    var currentDate = new Date();
+
     var sensorIds = sensors.map(function(sensor) {
-        return sensor._id;
+        return {
+            sensor: mongoose.Types.ObjectId(sensor._id),
+            limits: {
+                high: 100,
+                low: 0
+            }
+        };
     });
 
+    console.log(sensorIds);
+
     var device = new Device({
+        created: currentDate,
         serialNumber: 1,
         type: 'machine',
         sensors: sensorIds,
@@ -171,7 +183,7 @@ function createDevice(sensors, clientId) {
 
     device.save(function (err, device) {
         if (err) {
-            console.log('Error');
+            console.log('Error: ' + err);
         } else {
             console.log('Device created: ' + device._id);
         }
