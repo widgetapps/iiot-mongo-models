@@ -153,4 +153,12 @@ function createDevice(sensors, clientId) {
         descriptor: 'Dumy test device',
         client: mongoose.Types.ObjectId(clientId)
     });
+
+    device.save(function (err, device) {
+        if (err) {
+            console.log('Error');
+        } else {
+            console.log('Data pre-populated.');
+        }
+    });
 }
