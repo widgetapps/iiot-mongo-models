@@ -43,6 +43,12 @@ var DeviceSchema = new Schema({
             ref: 'Sensor',
             index: true
         },
+        tagCode: {
+            type: String
+        },
+        unit: {
+            type: String
+        },
         limits: {
             high: {
                 type: Number
