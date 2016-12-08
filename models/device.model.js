@@ -28,13 +28,33 @@ var DeviceSchema = new Schema({
         enum: ['hydrant','machine'],
         required: true
     },
+    geolocation: {
+        type: {
+            type: String
+        },
+        coordinates: {
+            type: [Number],
+            index: '2dsphere'
+        }
+    },
     sensors: [{
         sensor: {
             type: Schema.ObjectId,
-            ref: 'Client',
+            ref: 'Sensor',
             index: true
+        },
+        limits: {
+            high: {
+                type: Number
+            },
+            low: {
+                type: Number
+            }
         }
     }],
+    tagLocation: {
+        type: String
+    },
     tagCode: {
         type: String
     },
@@ -42,37 +62,10 @@ var DeviceSchema = new Schema({
         type: String
     },
     testmode: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
-    settings: {
-        normalrate: {
-            type: Number
-        },
-        highlimit: {
-            type: Number
-        },
-        lowlimit: {
-            type: Number
-        },
-        deadband: {
-            type: Number
-        },
-        bufferallduration: {
-            type: Number
-        },
-        preroll: {
-            type: Number
-        },
-        postroll: {
-            type: Number
-        },
-        starttime: {
-            type: Date
-        },
-        stoptime: {
-            type: Date
-        }
-    },
+    settings: {},
     acl: [{
         client: {
             type: Schema.ObjectId,

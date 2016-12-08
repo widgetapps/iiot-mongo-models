@@ -20,7 +20,15 @@ var TelemetrySchema = new Schema({
         index: true
     },
     tag: {
+        full: {
+            type: String,
+            index: true
+        },
         clientTagCode: {
+            type: String,
+            index: true
+        },
+        locationTagCode: {
             type: String,
             index: true
         },
@@ -29,6 +37,10 @@ var TelemetrySchema = new Schema({
             index: true
         },
         sensorTagCode: {
+            type: String,
+            index: true
+        },
+        valueTagCode: {
             type: String,
             index: true
         }
@@ -71,6 +83,11 @@ TelemetrySchema.pre('save', function(next) {
     // if created doesn't exist, add to that field
     if (!this.created)
         this.created = currentDate;
+
+    this.tag.full = this.tag.locationTagCode + '_' +
+        this.tag.deviceTagCode + '_' +
+        this.tag.sensorTagCode + '_' +
+        this.tag.valueTagCode;
 
     next();
 });
