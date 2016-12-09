@@ -185,6 +185,8 @@ function createDevice(sensors, clientId) {
     var sensorIds = sensors.map(function(sensor) {
         return {
             sensor: mongoose.Types.ObjectId(sensor._id),
+            tagCode: sensor.tagCode,
+            unit: sensor.unit,
             limits: {
                 high: 100,
                 low: 0
