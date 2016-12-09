@@ -39,10 +39,6 @@ var TelemetrySchema = new Schema({
         sensorTagCode: {
             type: String,
             index: true
-        },
-        valueTagCode: {
-            type: String,
-            index: true
         }
     },
     device: {
@@ -86,8 +82,7 @@ TelemetrySchema.pre('save', function(next) {
 
     this.tag.full = this.tag.locationTagCode + '_' +
         this.tag.deviceTagCode + '_' +
-        this.tag.sensorTagCode +
-        this.tag.valueTagCode;
+        this.tag.sensorTagCode;
 
     next();
 });
