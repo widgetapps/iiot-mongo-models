@@ -9,7 +9,9 @@ var mongoose = require('mongoose'),
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/terepac-one-dev');
+if (mongoose.connection.readyState === 0) {
+    mongoose.connect('mongodb://localhost/terepac-one-dev');
+}
 
 exports.populate = function() {
     console.log('Starting pre-pop...');
@@ -102,44 +104,66 @@ function createSensors(clientId) {
         {
             created: currentDate,
             tagCode: 'PI',
-            type: 'pres',
+            type: 1,
+            typeString: 'pres',
             description: 'Pressure',
             unit: 'kPa'
         },
         {
             created: currentDate,
             tagCode: 'TI',
-            type: 'temp',
+            type: 2,
+            typeString: 'temp',
             description: 'Tempurature',
             unit: 'celcius'
         },
         {
             created: currentDate,
+            tagCode: 'II',
+            type: 3,
+            typeString: 'curr',
+            description: 'Current',
+            unit: 'amp'
+        },
+        {
+            created: currentDate,
+            tagCode: 'EI',
+            type: 4,
+            typeString: 'volt',
+            description: 'Volts',
+            unit: 'v'
+        },
+        {
+            created: currentDate,
             tagCode: 'VXI',
-            type: 'aclx',
+            type: 5,
+            typeString: 'aclx',
             description: 'x-axis',
-            unit: ''
+            unit: 'x'
         },
         {
             created: currentDate,
             tagCode: 'VYI',
-            type: 'acly',
+            type: 6,
+            typeString: 'acly',
             description: 'y-axis',
-            unit: ''
+            unit: 'x'
         },
         {
             created: currentDate,
             tagCode: 'VZI',
-            type: 'aclz',
+            type: 7,
+            typeString: 'aclz',
             description: 'z-axis',
-            unit: ''
+            unit: 'x'
         },
         {
             created: currentDate,
             tagCode: 'VI',
-            type: 'shck',
+            type: 8,
+            typeString: 'shck',
             description: 'Vibration',
-            unit: ''
+            unit: 'x'
         }
     ];
 

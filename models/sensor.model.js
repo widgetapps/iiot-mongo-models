@@ -21,6 +21,11 @@ var SensorSchema = new Schema({
         type: String
     },
     type: {
+        type: Number,
+        index: true,
+        unique: true
+    },
+    typeString: {
         type: String
     },
     description: {
