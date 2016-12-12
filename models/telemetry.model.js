@@ -12,8 +12,8 @@ var mongoose = require('mongoose'),
 var TelemetrySchema = new Schema({
     created: {
         type: Date,
-        index: true,
-        required: true
+        default: Date.now,
+        index: true
     },
     timestamp: {
         type: Date,

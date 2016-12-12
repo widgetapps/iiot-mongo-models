@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 var DeviceSchema = new Schema({
     created: {
         type: Date,
-        required: true
+        default: Date.now
     },
     updated: {
         type: Date
