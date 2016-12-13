@@ -1,6 +1,6 @@
 {
   "name": "@terepac/terepac-models",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "private": false,
   "description": "Private Module for Terepac Models",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "Darryl Patterson",
-  "license": "Terepac",
+  "license": "LicenseRef-LICENSE",
   "bugs": {
     "url": "https://terepac_dp@bitbucket.org/terepac/terepac-models/issues"
   },
