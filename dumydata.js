@@ -9,10 +9,6 @@ var mongoose = require('mongoose'),
 
 mongoose.Promise = global.Promise;
 
-if (mongoose.connection.readyState === 0) {
-    mongoose.connect('mongodb://localhost/terepac-one-dev');
-}
-
 exports.populate = function() {
     console.log('Starting pre-pop...');
     populate();
