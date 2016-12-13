@@ -67,6 +67,9 @@ var TelemetrySchema = new Schema({
             },
             average: {
                 type: Number
+            },
+            current: {
+                type: Number
             }
         }
     }
