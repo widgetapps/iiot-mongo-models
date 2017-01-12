@@ -58,7 +58,7 @@ var DeviceSchema = new Schema({
             }
         }
     }],
-    descriptor: {
+    description: {
         type: String
     },
     testmode: {
