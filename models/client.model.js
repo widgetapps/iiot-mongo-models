@@ -80,6 +80,18 @@ var ClientSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Client'
     }],
+    locations: [{
+        type: Schema.ObjectId,
+        ref: 'Location'
+    }],
+    assets: [{
+        type: Schema.ObjectId,
+        ref: 'Asset'
+    }],
+    devices: [{
+        type: Schema.ObjectId,
+        ref: 'Device'
+    }],
     users: [{
         type: Schema.ObjectId,
         ref: 'User'

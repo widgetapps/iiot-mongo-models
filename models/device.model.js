@@ -58,12 +58,6 @@ var DeviceSchema = new Schema({
             }
         }
     }],
-    tagLocation: {
-        type: String
-    },
-    tagCode: {
-        type: String
-    },
     descriptor: {
         type: String
     },
@@ -90,6 +84,16 @@ var DeviceSchema = new Schema({
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
+        index: true
+    },
+    location: {
+        type: Schema.ObjectId,
+        ref: 'Location',
+        index: true
+    },
+    asset: {
+        type: Schema.ObjectId,
+        ref: 'Asset',
         index: true
     }
 });

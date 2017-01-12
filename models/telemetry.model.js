@@ -2,6 +2,7 @@
 
 /**
  * Module dependencies.
+ * The Asset & Device IDs makes this data tied to the combo.
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
@@ -32,7 +33,7 @@ var TelemetrySchema = new Schema({
             type: String,
             index: true
         },
-        deviceTagCode: {
+        assetTagCode: {
             type: String,
             index: true
         },
@@ -40,6 +41,11 @@ var TelemetrySchema = new Schema({
             type: String,
             index: true
         }
+    },
+    asset: {
+        type: Schema.ObjectId,
+        ref: 'Asset',
+        index: true
     },
     device: {
         type: Schema.ObjectId,
