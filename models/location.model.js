@@ -18,7 +18,8 @@ var LocationSchema = new Schema({
         type: Date
     },
     tagCode: {
-        type: String
+        type: String,
+        index: true
     },
     description: {
         type: String

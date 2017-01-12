@@ -18,7 +18,8 @@ var SensorSchema = new Schema({
         type: Date
     },
     tagCode: {
-        type: String
+        type: String,
+        index: true
     },
     type: {
         type: Number,

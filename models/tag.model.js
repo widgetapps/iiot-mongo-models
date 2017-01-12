@@ -20,7 +20,26 @@ var TagSchema = new Schema({
         type: Date
     },
     tag: {
-        type: String
+        full: {
+            type: String,
+            index: true
+        },
+        clientTagCode: {
+            type: String,
+            index: true
+        },
+        locationTagCode: {
+            type: String,
+            index: true
+        },
+        assetTagCode: {
+            type: String,
+            index: true
+        },
+        sensorTagCode: {
+            type: String,
+            index: true
+        }
     },
     active: {
         type: Boolean
@@ -35,7 +54,12 @@ var TagSchema = new Schema({
         end: {
             type: Date
         }
-    }]
+    }],
+    client: {
+        type: Schema.ObjectId,
+        ref: 'Client',
+        index: true
+    }
 });
 
 TagSchema.pre('save', function(next) {

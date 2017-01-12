@@ -15,7 +15,8 @@ var AssetSchema = new Schema({
         default: Date.now
     },
     updated: {
-        type: Date
+        type: Date,
+        index: true
     },
     tagCode: {
         type: String
