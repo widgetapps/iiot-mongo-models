@@ -42,21 +42,9 @@ var TelemetrySchema = new Schema({
             index: true
         }
     },
-    asset: {
-        type: Schema.ObjectId,
-        ref: 'Asset',
-        index: true
-    },
-    device: {
-        type: Schema.ObjectId,
-        ref: 'Device',
-        index: true
-    },
-    sensor: {
-        type: Schema.ObjectId,
-        ref: 'Sensor',
-        index: true
-    },
+    asset: {},
+    device: {},
+    sensor: {},
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
