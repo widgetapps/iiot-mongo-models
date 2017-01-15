@@ -67,8 +67,7 @@ var UserSchema = new Schema({
 		type: {
 			type: String,
 			enum: ['user', 'admin', 'manager', 'super']
-		},
-		default: 'user'
+		}
 	},
     active: {
         type: Boolean,
