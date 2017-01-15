@@ -57,6 +57,11 @@ var TelemetrySchema = new Schema({
         ref: 'Sensor',
         index: true
     },
+    client: {
+        type: Schema.ObjectId,
+        ref: 'Client',
+        index: true
+    },
     data: {
         unit: {
             type: String
