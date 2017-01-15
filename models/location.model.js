@@ -58,11 +58,11 @@ var LocationSchema = new Schema({
         ref: 'Client',
         index: true
     },
-    assets: {
+    assets: [{
         type: Schema.ObjectId,
         ref: 'Asset',
         index: true
-    }
+    }]
 });
 
 LocationSchema.pre('save', function(next) {
