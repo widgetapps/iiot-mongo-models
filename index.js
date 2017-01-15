@@ -13,5 +13,3 @@ exports.User      = require('./models/user.model');
 
 exports.populateDumyData = dumydata.populate;
 
-// TODO: Need to add a machine collection. This will allow us to tie data to a real asset.
-// A machine should be an actual product. Need something like a SKU or UPC code to link to product catalogues.

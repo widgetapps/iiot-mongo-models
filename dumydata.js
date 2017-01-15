@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
     randomstring = require('randomstring'),
     Sensor    = require('./models/sensor.model'),
     Device    = require('./models/device.model'),
+    Asset     = require('./models/asset.model'),
+    Location  = require('./models/location.model'),
     Client    = require('./models/client.model'),
     User      = require('./models/user.model');
 
@@ -26,7 +28,7 @@ function createClient() {
         tagCode: 'TERE',
         companyName: 'Terepac Corporation',
         address: {
-            street1: '554 Parkside Drive,',
+            street: '554 Parkside Drive,',
             city: 'Waterloo',
             province: 'ON',
             postalCode: 'N2L5Z4',
@@ -91,7 +93,66 @@ function createUser(clientId) {
     });
 }
 
-function createSensors(clientId) {
+function createLocation(clientId) {
+    console.log('Creating location...');
+
+    var currentDate = new Date();
+
+    var location = new Location ({
+        created: currentDate,
+        tagCode: 'MOBL1',
+        description: 'Mobile Unit 1',
+        address: {
+            street: '554 Parkside Drive,',
+            city: 'Waterloo',
+            province: 'ON',
+            postalCode: 'N2L5Z4',
+            country: 'CA'
+        },
+        client: mongoose.Types.ObjectId(clientId)
+    });
+
+    location.save(function(err, loc) {
+        if (err) {
+            console.log('Error');
+        } else {
+            console.log('Location created: ' + loc._id);
+        }
+    });
+}
+
+function createAsset(clientId, locationId) {
+    console.log('Creating asset...');
+
+    var currentDate = new Date();
+
+    var asset = new Asset({
+        created: currentDate,
+        tagCode: 'DEVICE1',
+        name: 'Device 1',
+        description: 'This is mobile device #1',
+        client: mongoose.Types.ObjectId(clientId),
+        location: mongoose.Types.ObjectId(locationId)
+    });
+
+    asset.save(function(err, ast) {
+        if (err) {
+            console.log('Error');
+        } else {
+            Location.findByIdAndUpdate(
+                locationId,
+                {$push: {'assets': mongoose.Types.ObjectId(ast._id)}},
+                {safe: true, upsert: true, new : true},
+                function(err, location) {
+                    console.log('Asset created:' + ast._id);
+                    createSensors(clientId, locationId, ast._id);
+                }
+            );
+        }
+    });
+}
+
+function createSensors(clientId, locationId, assetId) {
     console.log('Creating sensors...');
 
     var currentDate = new Date();
@@ -168,12 +229,12 @@ function createSensors(clientId) {
             console.log('Error');
         } else {
             console.log('Sensors created.');
-            createDevice(docs, clientId);
+            createDevice(docs, clientId, locationId, assetId);
         }
     });
 }
 
-function createDevice(sensors, clientId) {
+function createDevice(sensors, clientId, locationId, assetId) {
     console.log('Creating device...');
 
     var currentDate = new Date();
@@ -200,7 +261,9 @@ function createDevice(sensors, clientId) {
         tagCode: 'DV0001',
         tagLocation: 'MOBL',
         descriptor: 'Dumy test device',
-        client: mongoose.Types.ObjectId(clientId)
+        client: mongoose.Types.ObjectId(clientId),
+        location: mongoose.Types.ObjectId(locationId),
+        asset: mongoose.Types.ObjectId(assetId)
     });
 
     device.save(function (err, device) {
