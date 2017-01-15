@@ -83,7 +83,7 @@ TelemetrySchema.pre('save', function(next) {
         this.created = currentDate;
 
     this.tag.full = this.tag.locationTagCode + '_' +
-        this.tag.deviceTagCode + '_' +
+        this.tag.assetTagCode + '_' +
         this.tag.sensorTagCode;
 
     next();
