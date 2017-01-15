@@ -86,7 +86,7 @@ function createUser(clientId) {
                 {safe: true, upsert: true, new : true},
                 function(err, client) {
                     console.log('User created:' + user._id);
-                    createSensors(clientId);
+                    createLocation(clientId);
                 }
             );
         }
@@ -117,6 +117,7 @@ function createLocation(clientId) {
             console.log('Error');
         } else {
             console.log('Location created: ' + loc._id);
+            createAsset(clientId, loc._id);
         }
     });
 }
