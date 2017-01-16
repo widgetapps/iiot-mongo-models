@@ -28,15 +28,6 @@ var DeviceSchema = new Schema({
         enum: ['hydrant','machine'],
         required: true
     },
-    geolocation: {
-        type: {
-            type: String
-        },
-        coordinates: {
-            type: [Number],
-            index: '2dsphere'
-        }
-    },
     sensors: [{
         sensor: {
             type: Schema.ObjectId,

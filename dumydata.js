@@ -260,8 +260,6 @@ function createDevice(sensors, clientId, locationId, assetId, locationTag, asset
         serialNumber: 1,
         type: 'machine',
         sensors: sensorIds,
-        tagCode: 'DV0001',
-        tagLocation: 'MOBL',
         descriptor: 'Dumy test device',
         client: mongoose.Types.ObjectId(clientId),
         location: mongoose.Types.ObjectId(locationId),
@@ -305,5 +303,5 @@ function createTag(clientId, deviceId, assetId, locationTag, assetTag, sensorTag
         } else {
             console.log('Tag created: ' + t._id);
         }
-    })
+    });
 }
