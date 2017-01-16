@@ -1,6 +1,6 @@
 {
   "name": "@terepac/terepac-models",
-  "version": "0.3.16",
+  "version": "0.3.17",
   "private": false,
   "description": "Private Module for Terepac Models",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "url": "https://terepac_dp@bitbucket.org/terepac/terepac-models/issues"
   },
   "dependencies": {
-    "crypto": "0.0.3",
+    "md5": "^2.2.1",
     "mongoose": "^4.7.0",
     "randomstring": "^1.1.5"
   },

@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    md5 = require('md5'),
+    crypto = require('crypto');
 
 /**
  * Device Schema
@@ -87,7 +89,34 @@ var DeviceSchema = new Schema({
         ref: 'Asset',
         index: true
     }
+},{
+    toObject: {
+        virtuals: false
+    },
+    toJSON: {
+        virtuals: false
+    }
 });
+
+DeviceSchema
+    .virtual('mqtt.username')
+    .get(function () {
+        return md5(this.serialNumber);
+    });
+
+DeviceSchema
+    .virtual('mqtt.password')
+    .get(function () {
+        var key = 'R5CYPRvd82keWMsfRDWJ';
+        if (process.env.SECRET_KEY_AUTH) {
+            key = process.env.SECRET_KEY_AUTH;
+        }
+
+        const hmac = crypto.createHmac('md5', key);
+        hmac.update(md5(this.serialNumber));
+
+        return hmac.digest('hex');
+    });
 
 DeviceSchema.pre('save', function(next) {
     // get the current date
