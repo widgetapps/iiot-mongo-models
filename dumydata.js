@@ -117,20 +117,20 @@ function createLocation(clientId) {
             console.log('Error');
         } else {
             console.log('Location created: ' + loc._id);
-            createAsset(clientId, loc._id);
+            createAsset(clientId, loc._id, 'MOBL1');
         }
     });
 }
 
-function createAsset(clientId, locationId) {
+function createAsset(clientId, locationId, locationTag) {
     console.log('Creating asset...');
 
     var currentDate = new Date();
 
     var asset = new Asset({
         created: currentDate,
-        tagCode: 'DEVICE1',
-        name: 'Device 1',
+        tagCode: 'ASSET1',
+        name: 'Asset 1',
         description: 'This is mobile device #1',
         client: mongoose.Types.ObjectId(clientId),
         location: mongoose.Types.ObjectId(locationId)
@@ -146,14 +146,14 @@ function createAsset(clientId, locationId) {
                 {safe: true, upsert: true, new : true},
                 function(err, location) {
                     console.log('Asset created:' + ast._id);
-                    createSensors(clientId, locationId, ast._id);
+                    createSensors(clientId, locationId, ast._id, locationTag, 'ASSET1');
                 }
             );
         }
     });
 }
 
-function createSensors(clientId, locationId, assetId) {
+function createSensors(clientId, locationId, assetId, locationTag, assetTag) {
     console.log('Creating sensors...');
 
     var currentDate = new Date();
@@ -230,12 +230,12 @@ function createSensors(clientId, locationId, assetId) {
             console.log('Error');
         } else {
             console.log('Sensors created.');
-            createDevice(docs, clientId, locationId, assetId);
+            createDevice(docs, clientId, locationId, assetId, locationTag, assetTag);
         }
     });
 }
 
-function createDevice(sensors, clientId, locationId, assetId) {
+function createDevice(sensors, clientId, locationId, assetId, locationTag, assetTag) {
     console.log('Creating device...');
 
     var currentDate = new Date();
@@ -272,6 +272,29 @@ function createDevice(sensors, clientId, locationId, assetId) {
             console.log('Error: ' + err);
         } else {
             console.log('Device created: ' + device._id);
+            createTag(clientId, device._id, assetId, locationTag, assetTag, sensor.tagCode);
         }
+    });
+}
+
+function createTag(clientId, deviceId, assetId, locationTag, assetTag, sensorTag) {
+    console.log('Creating tag...');
+
+    var currentDate = new Date();
+
+    var tag = new Tag({
+        created: currentDate,
+        tag: {
+            full: locationTag + "_" + assetTag + "_" + sensorTag,
+            clientTagCode: 'TERE',
+            locationTagCode: locationTag,
+            assetTagCode: assetTag,
+            sensorTagCode: sensorTag
+        },
+        active: true,
+        activeStart: currentDate,
+        client: clientId,
+        device: deviceId,
+        asset: assetId
     });
 }

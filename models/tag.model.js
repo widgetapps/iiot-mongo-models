@@ -59,6 +59,16 @@ var TagSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Client',
         index: true
+    },
+    device: {
+        type: Schema.ObjectId,
+        ref: 'Device',
+        index: true
+    },
+    asset: {
+        type: Schema.ObjectId,
+        ref: 'Asset',
+        index: true
     }
 });
 
