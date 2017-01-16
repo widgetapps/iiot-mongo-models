@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
     Sensor    = require('./models/sensor.model'),
     Device    = require('./models/device.model'),
     Asset     = require('./models/asset.model'),
+    Tag       = require('./models/tag.model'),
     Location  = require('./models/location.model'),
     Client    = require('./models/client.model'),
     User      = require('./models/user.model');
