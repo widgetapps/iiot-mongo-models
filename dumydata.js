@@ -297,4 +297,12 @@ function createTag(clientId, deviceId, assetId, locationTag, assetTag, sensorTag
         device: deviceId,
         asset: assetId
     });
+
+    tag.save(function (err, t) {
+        if (err) {
+            console.log('Error: ' + err);
+        } else {
+            console.log('Tag created: ' + t._id);
+        }
+    })
 }
