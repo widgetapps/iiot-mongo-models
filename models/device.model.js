@@ -112,7 +112,7 @@ DeviceSchema
             key = process.env.SECRET_KEY_AUTH;
         }
 
-        const hmac = crypto.createHmac('md5', key);
+        var hmac = crypto.createHmac('md5', key);
         hmac.update(md5(this.serialNumber));
 
         return hmac.digest('hex');
