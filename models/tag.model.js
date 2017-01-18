@@ -41,6 +41,17 @@ var TagSchema = new Schema({
             index: true
         }
     },
+    description: {
+        location: {
+            type: String
+        },
+        asset: {
+            type: String
+        },
+        sensor: {
+            type: String
+        }
+    },
     active: {
         type: Boolean
     },
