@@ -68,6 +68,32 @@ var ClientSchema = new Schema({
             type: String
         }
     },
+    preferences: {
+        messaging: {
+            sms: {
+                send: {
+                    type: Boolean
+                },
+                number: {
+                    type: String
+                }
+            },
+            email: {
+                send: {
+                    type: Boolean
+                },
+                address: {
+                    type: Boolean
+                }
+            },
+            frequencyMinutes: {
+                type: Number
+            },
+            lastSent: {
+                type: Date
+            }
+        }
+    },
     reseller: {
         type: Boolean,
         default: false
