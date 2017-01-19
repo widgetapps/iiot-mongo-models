@@ -31,6 +31,10 @@ var MessageSchema = new Schema({
         enum: ['normal', 'warning', 'alert'],
         default: 'normal'
     },
+    viewed: {
+        type: Boolean,
+        default: false
+    },
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
