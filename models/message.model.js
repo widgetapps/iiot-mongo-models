@@ -35,6 +35,14 @@ var MessageSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Client',
         index: true
+    },
+    source: {
+        collection: {
+            type: String
+        },
+        id: {
+            type: Schema.ObjectId
+        }
     }
 });
 
