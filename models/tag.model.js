@@ -52,6 +52,9 @@ var TagSchema = new Schema({
             type: String
         }
     },
+    unit: {
+        type: String
+    },
     active: {
         type: Boolean
     },
