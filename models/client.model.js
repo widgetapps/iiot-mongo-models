@@ -68,8 +68,17 @@ var ClientSchema = new Schema({
             type: String
         }
     },
-    preferences: {
-        messaging: {
+    alertGroups: [{
+        code: {
+            type: String
+        },
+        name: {
+            type: String
+        },
+        contacts: [{
+            name: {
+                type: String
+            },
             sms: {
                 send: {
                     type: Boolean
@@ -83,14 +92,25 @@ var ClientSchema = new Schema({
                     type: Boolean
                 },
                 address: {
-                    type: Boolean
+                    type: String
                 }
             },
+            user: {
+                send: {
+                    type: Boolean
+                },
+                id: {
+                    type: Schema.ObjectId,
+                    ref: 'User',
+                    index: true
+                }
+            }
+        }]
+    }],
+    preferences: {
+        messaging: {
             frequencyMinutes: {
                 type: Number
-            },
-            lastSent: {
-                type: Date
             }
         }
     },
@@ -100,27 +120,33 @@ var ClientSchema = new Schema({
     },
     resellerParent: {
         type: Schema.ObjectId,
-        ref: 'Client'
+        ref: 'Client',
+        index: true
     },
     resellerClients: [{
         type: Schema.ObjectId,
-        ref: 'Client'
+        ref: 'Client',
+        index: true
     }],
     locations: [{
         type: Schema.ObjectId,
-        ref: 'Location'
+        ref: 'Location',
+        index: true
     }],
     assets: [{
         type: Schema.ObjectId,
-        ref: 'Asset'
+        ref: 'Asset',
+        index: true
     }],
     devices: [{
         type: Schema.ObjectId,
-        ref: 'Device'
+        ref: 'Device',
+        index: true
     }],
     users: [{
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        index: true
     }]
 });
 

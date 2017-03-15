@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Message Schema
+ * Alert Schema
  */
-var MessageSchema = new Schema({
+var AlertSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -18,44 +18,48 @@ var MessageSchema = new Schema({
         type: Date,
         index: true
     },
-    subject: {
-        type: String,
-        required: true
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    priority: {
-        type: String,
-        enum: ['normal', 'warning', 'alert'],
-        default: 'normal'
-    },
-    viewed: {
-        type: Boolean,
-        default: false
+    asset: {
+        type: Schema.ObjectId,
+        ref: 'Asset',
+        index: true
     },
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
         index: true
     },
-    user: {
+    sensor: {
         type: Schema.ObjectId,
-        ref: 'user',
+        ref: 'Sensor',
         index: true
     },
-    source: {
-        collection: {
-            type: String
+    limits: {
+        low: {
+            type: Number
         },
-        id: {
-            type: Schema.ObjectId
+        high: {
+            type: Number
         }
+    },
+    lastValue: {
+        type: Number
+    },
+    active: {
+        type: Boolean,
+        default: true
+    },
+    alertGroupCodes: [{
+        type: String
+    }],
+    frequencyMinutes: {
+        type: Number
+    },
+    lastSent: {
+        type: Date
     }
 });
 
-MessageSchema.pre('save', function(next) {
+AlertSchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
 
@@ -69,4 +73,4 @@ MessageSchema.pre('save', function(next) {
     next();
 });
 
-module.exports = mongoose.model('Message', MessageSchema);
+module.exports = mongoose.model('Alert', AlertSchema);
