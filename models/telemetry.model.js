@@ -74,6 +74,8 @@ var TelemetrySchema = new Schema({
     }
 });
 
+TelemetrySchema.index({ timestamp: 1, 'tag.full': 1 });
+
 TelemetrySchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
