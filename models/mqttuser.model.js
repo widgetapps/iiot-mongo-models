@@ -20,10 +20,13 @@ var MqttUserSchema = new Schema({
     },
     username: {
         type: String,
-        index: true
+        unique: true,
+        index: true,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     },
     salt: {
         type: String

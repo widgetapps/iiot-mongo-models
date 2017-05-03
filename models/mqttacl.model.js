@@ -20,7 +20,9 @@ var MqttAclSchema = new Schema({
     },
     username: {
         type: String,
-        index: true
+        unique: true,
+        index: true,
+        required: true
     },
     clientid: {
         type: String
