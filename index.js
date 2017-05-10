@@ -12,8 +12,7 @@ exports.Sensor    = require('./models/sensor.model');
 exports.Tag       = require('./models/tag.model');
 exports.Telemetry = require('./models/telemetry.model');
 exports.User      = require('./models/user.model');
-exports.MqttUser  = require('./models/mqttuser.model');
-exports.MqttAcl   = require('./models/mqttacl.model');
+exports.Mqtt      = require('./models/mqtt.model');
 
 exports.populateDumyData = dumydata.populate;
 

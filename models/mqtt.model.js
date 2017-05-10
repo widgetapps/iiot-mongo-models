@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * MqttAcl Schema
+ * Mqtt Schema
  */
-var MqttAclSchema = new Schema({
+var MqttSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -23,6 +23,16 @@ var MqttAclSchema = new Schema({
         unique: true,
         index: true,
         required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    salt: {
+        type: String
+    },
+    is_superuser: {
+        type: Boolean
     },
     clientid: {
         type: String
@@ -38,7 +48,7 @@ var MqttAclSchema = new Schema({
     }
 });
 
-MqttAclSchema.pre('save', function(next) {
+MqttSchema.pre('save', function(next) {
     // get the current date
     var currentDate = new Date();
 
@@ -52,4 +62,4 @@ MqttAclSchema.pre('save', function(next) {
     next();
 });
 
-module.exports = mongoose.model('MqttAcl', MqttAclSchema);
+module.exports = mongoose.model('Mqtt', MqttSchema);
