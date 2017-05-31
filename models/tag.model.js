@@ -67,6 +67,11 @@ var TagSchema = new Schema({
         },
         end: {
             type: Date
+        },
+        device: {
+            type: Schema.ObjectId,
+            ref: 'Device',
+            index: true
         }
     }],
     client: {
