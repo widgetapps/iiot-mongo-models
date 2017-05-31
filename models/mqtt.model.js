@@ -43,7 +43,7 @@ var MqttSchema = new Schema({
     subscribe: {
         type: [String]
     },
-    subpub: {
+    pubsub: {
         type: [String]
     }
 });
