@@ -64,7 +64,7 @@ var DeviceSchema = new Schema({
         },
         datatype: {
             type: String,
-            enum: ['string', 'int', 'boolean'],
+            enum: ['string', 'int', 'boolean', 'date'],
             default: 'int'
         },
         range: {}
