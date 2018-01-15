@@ -27,6 +27,16 @@ var AssetSchema = new Schema({
     description: {
         type: String
     },
+    settings: [{
+        name: {
+            type: String
+        },
+        datatype: {
+            type: String
+        },
+        range: {},
+        value: {}
+    }],
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
