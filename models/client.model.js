@@ -115,19 +115,21 @@ var ClientSchema = new Schema({
         }
     },
     reseller: {
-        type: Boolean,
-        default: false
+        isReseller: {
+            type: Boolean,
+            default: false
+        },
+        clients:[{
+            type: Schema.ObjectId,
+            ref: 'Client',
+            index: true
+        }]
     },
     resellerParent: {
         type: Schema.ObjectId,
         ref: 'Client',
         index: true
     },
-    resellerClients: [{
-        type: Schema.ObjectId,
-        ref: 'Client',
-        index: true
-    }],
     locations: [{
         type: Schema.ObjectId,
         ref: 'Location',

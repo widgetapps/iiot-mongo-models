@@ -19,7 +19,8 @@ var SensorSchema = new Schema({
     },
     tagCode: {
         type: String,
-        index: true
+        index: true,
+        unique: true
     },
     type: {
         type: Number,

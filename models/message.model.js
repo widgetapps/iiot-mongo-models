@@ -32,8 +32,13 @@ var MessageSchema = new Schema({
         default: 'normal'
     },
     viewed: {
-        type: Boolean,
-        default: false
+        isViewed: {
+            type: Boolean,
+            default: false
+        },
+        when: {
+            type: Date
+        }
     },
     client: {
         type: Schema.ObjectId,

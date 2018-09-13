@@ -58,17 +58,6 @@ var DeviceSchema = new Schema({
         type: Boolean,
         default: false
     },
-    settings: [{
-        name: {
-            type: String
-        },
-        datatype: {
-            type: String,
-            enum: ['string', 'int', 'boolean', 'date'],
-            default: 'int'
-        },
-        range: {}
-    }],
     acl: [{
         client: {
             type: Schema.ObjectId,

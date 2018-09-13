@@ -33,7 +33,7 @@ var AssetSchema = new Schema({
         },
         datatype: {
             type: String,
-            enum: ['string', 'int', 'boolean', 'date'],
+            enum: ['string', 'int', 'double', 'boolean', 'date'],
             default: 'int'
         },
         range: {},

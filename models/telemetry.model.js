@@ -54,9 +54,6 @@ var TelemetrySchema = new Schema({
         unit: {
             type: String
         },
-        quality: {
-            type: Number
-        },
         values :{
             min: {
                 type: Number
