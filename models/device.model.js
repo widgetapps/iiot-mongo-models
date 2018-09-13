@@ -31,25 +31,9 @@ var DeviceSchema = new Schema({
         required: true
     },
     sensors: [{
-        sensor: {
-            type: Schema.ObjectId,
-            ref: 'Sensor',
-            index: true
-        },
-        tagCode: {
-            type: String
-        },
-        unit: {
-            type: String
-        },
-        limits: {
-            high: {
-                type: Number
-            },
-            low: {
-                type: Number
-            }
-        }
+        type: Schema.ObjectId,
+        ref: 'Sensor',
+        index: true
     }],
     description: {
         type: String
