@@ -107,13 +107,6 @@ var ClientSchema = new Schema({
             }
         }]
     }],
-    preferences: {
-        messaging: {
-            frequencyMinutes: {
-                type: Number
-            }
-        }
-    },
     reseller: {
         isReseller: {
             type: Boolean,
