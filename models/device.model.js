@@ -38,6 +38,15 @@ var DeviceSchema = new Schema({
     description: {
         type: String
     },
+    geolocation: {
+        type: {
+            type: String
+        },
+        coordinates: {
+            type: [Number],
+            index: '2dsphere'
+        }
+    },
     testmode: {
         type: Boolean,
         default: false
