@@ -28,6 +28,10 @@ var AssetSchema = new Schema({
         type: String
     },
     settings: [{
+        key: {
+            type: String,
+            index: true
+        },
         name: {
             type: String
         },
