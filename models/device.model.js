@@ -66,6 +66,20 @@ var DeviceSchema = new Schema({
             enum: ['r','w']
         }
     }],
+    resets: [{
+        date: {
+            type: Date
+        },
+        cause: {
+            type: String
+        },
+        'hw-rev': {
+            type: String
+        },
+        'sw-rev': {
+            type: String
+        }
+    }],
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
