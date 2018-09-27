@@ -69,6 +69,9 @@ var TelemetrySchema = new Schema({
             },
             current: {
                 type: Number
+            },
+            samples: {
+                type: Number
             }
         }
     }
