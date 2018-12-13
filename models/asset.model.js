@@ -40,6 +40,9 @@ var AssetSchema = new Schema({
             enum: ['string', 'int', 'double', 'boolean', 'date'],
             default: 'int'
         },
+        unit: {
+            type: String
+        },
         range: {},
         value: {}
     }],
