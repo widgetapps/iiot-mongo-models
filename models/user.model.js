@@ -91,6 +91,14 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
+	},
+	keys: {
+		public: {
+			type: String
+		},
+		private: {
+			type: String
+		}
 	}
 });
 
