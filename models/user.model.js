@@ -78,6 +78,14 @@ var UserSchema = new Schema({
         ref: 'Client',
         index: true
     },
+	pki: {
+		publicKey: {
+			type: String
+		},
+		privateKey: {
+			type: String
+		}
+	},
 	updated: {
 		type: Date
 	},
@@ -91,14 +99,6 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	},
-	keys: {
-		public: {
-			type: String
-		},
-		private: {
-			type: String
-		}
 	}
 });
 
