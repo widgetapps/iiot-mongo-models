@@ -19,6 +19,12 @@ var DeviceSchema = new Schema({
     updated: {
         type: Date
     },
+    deviceId: {
+        type: String,
+        unique: true,
+        index: true,
+        required: true
+    },
     serialNumber: {
         type: String,
         unique: true,
