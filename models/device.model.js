@@ -19,7 +19,7 @@ var DeviceSchema = new Schema({
     updated: {
         type: Date
     },
-    deviceId: {
+    topicId: {
         type: String,
         unique: true,
         index: true,
