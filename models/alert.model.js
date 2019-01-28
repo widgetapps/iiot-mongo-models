@@ -18,11 +18,11 @@ var AlertSchema = new Schema({
         type: Date,
         index: true
     },
-    asset: {
+    assets: [{
         type: Schema.ObjectId,
         ref: 'Asset',
         index: true
-    },
+    }],
     client: {
         type: Schema.ObjectId,
         ref: 'Client',
