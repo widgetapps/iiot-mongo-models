@@ -64,10 +64,8 @@ var UserSchema = new Schema({
 	providerData: {},
 	additionalProvidersData: {},
 	role: {
-		type: {
-			type: String,
-			enum: ['user', 'admin', 'api', 'manager', 'super', 'manufacturer']
-		}
+		type: String,
+		enum: ['user', 'admin', 'api', 'manager', 'super', 'manufacturer']
 	},
     active: {
         type: Boolean,
