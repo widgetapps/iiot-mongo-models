@@ -66,7 +66,7 @@ var UserSchema = new Schema({
 	role: {
 		type: {
 			type: String,
-			enum: ['user', 'admin', 'manager', 'super', 'manufacturer']
+			enum: ['user', 'admin', 'api', 'manager', 'super', 'manufacturer']
 		}
 	},
     active: {
