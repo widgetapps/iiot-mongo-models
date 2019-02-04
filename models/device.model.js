@@ -41,6 +41,7 @@ var DeviceSchema = new Schema({
         ref: 'Sensor',
         index: true
     }],
+    components: {},
     description: {
         type: String
     },
