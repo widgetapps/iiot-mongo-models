@@ -28,9 +28,8 @@ var AlertSchema = new Schema({
         ref: 'Client',
         index: true
     },
-    sensor: {
-        type: Schema.ObjectId,
-        ref: 'Sensor',
+    sensorCode: {
+        type: String,
         index: true
     },
     limits: {
