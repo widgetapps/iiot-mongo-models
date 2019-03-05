@@ -18,6 +18,9 @@ var AlertSchema = new Schema({
         type: Date,
         index: true
     },
+    name: {
+        type: String
+    },
     assets: [{
         type: Schema.ObjectId,
         ref: 'Asset',
