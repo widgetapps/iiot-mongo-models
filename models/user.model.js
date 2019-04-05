@@ -82,6 +82,9 @@ var UserSchema = new Schema({
 		},
 		privateKey: {
 			type: String
+		},
+		token: {
+			type: String
 		}
 	},
 	updated: {
@@ -114,8 +117,7 @@ UserSchema.pre('save', function(next) {
     if (!this.created)
         this.created = currentDate;
 
-
-	if (this.password && this.password.length > 6) {
+	if (this.password  && this.isModified('password') && this.password.length > 6) {
 		this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
 		this.password = this.hashPassword(this.password);
 	}
