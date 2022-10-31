@@ -68,11 +68,11 @@ function createUser(clientId) {
     console.log('Creating user...');
 
     var user = new User({
-        firstName: 'Darryl',
-        lastName: 'Patterson',
-        email: 'darryl.patterson@terepac.com',
-        password: 'terepac',
-        phone: '4167866116',
+        firstName: 'John',
+        lastName: 'Dough',
+        email: 'john.dough@example.com',
+        password: 'example',
+        phone: '5555551234',
         active: true
     });
     user.provider = 'local';
